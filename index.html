@@ -9,13 +9,34 @@
 </head>
 
 <body>
-    <main class="app-shell">
+    <div id="login-overlay" class="login-overlay" aria-modal="true" role="dialog" aria-label="Login">
+        <div class="login-card panel">
+            <p class="eyebrow">Student Management App</p>
+            <h1 class="login-title">Sign in</h1>
+            <form id="login-form" class="login-form" novalidate>
+                <label>
+                    <span>Username</span>
+                    <input id="login-username" name="username" type="text" placeholder="Enter username" autocomplete="username" required>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input id="login-password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+                </label>
+                <button type="submit">Sign in</button>
+            </form>
+            <p id="login-status" class="form-status" aria-live="polite"></p>
+            <p class="login-hint">Demo credentials: <strong>admin</strong> / <strong>admin123</strong></p>
+        </div>
+    </div>
+
+    <main id="app-content" class="app-shell" hidden>
         <section class="panel hero-panel">
             <p class="eyebrow">Student Management App</p>
             <h1>Track student records locally.</h1>
             <p class="hero-copy">
                 Add students with a simple form and keep the list persisted in your browser using localStorage.
             </p>
+            <button id="logout-btn" class="logout-btn" type="button">Sign out</button>
         </section>
 
         <section class="panel form-panel">
