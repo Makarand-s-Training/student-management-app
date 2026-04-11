@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="panel hero-panel">
+            <p class="eyebrow">Student Management App</p>
+            <h1>Track student records locally.</h1>
+            <p class="hero-copy">
+                Add students with a simple form and keep the list persisted in your browser using localStorage.
+            </p>
+        </section>
+
+        <section class="panel form-panel">
+            <h2>Add Student</h2>
+            <form id="student-form" class="student-form">
+                <label>
+                    <span>Name</span>
+                    <input id="student-name" name="name" type="text" placeholder="Enter student name" required>
+                </label>
+
+                <label>
+                    <span>Student ID</span>
+                    <input id="student-id" name="studentId" type="text" placeholder="Enter student ID" required>
+                </label>
+
+                <label>
+                    <span>Course</span>
+                    <input id="student-course" name="course" type="text" placeholder="Enter course name" required>
+                </label>
+
+                <button type="submit">Add Student</button>
+            </form>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel list-panel">
+            <div class="list-header">
+                <h2>Student List</h2>
+                <span id="student-count" class="student-count">0 students</span>
+            </div>
+            <div id="student-list" class="student-list" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

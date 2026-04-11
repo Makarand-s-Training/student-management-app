@@ -1,0 +1,181 @@
+:root {
+    color-scheme: light;
+    --bg: #f3efe7;
+    --panel: rgba(255, 251, 245, 0.92);
+    --panel-border: rgba(84, 66, 55, 0.12);
+    --text: #2b2118;
+    --muted: #6b5a4d;
+    --accent: #c66b3d;
+    --accent-dark: #9f4f27;
+    --shadow: 0 20px 45px rgba(74, 49, 31, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(237, 188, 138, 0.45), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(138, 176, 183, 0.3), transparent 28%),
+        linear-gradient(160deg, #f8f4ec 0%, #efe3d2 100%);
+}
+
+.app-shell {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 3rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.hero-panel h1,
+.form-panel h2,
+.list-panel h2 {
+    margin: 0;
+}
+
+.eyebrow {
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: var(--accent-dark);
+}
+
+.hero-copy {
+    margin: 0.75rem 0 0;
+    max-width: 60ch;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.student-form {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.student-form label {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.student-form span {
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.student-form input {
+    width: 100%;
+    border: 1px solid rgba(84, 66, 55, 0.18);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    font: inherit;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.student-form input:focus {
+    outline: 2px solid rgba(198, 107, 61, 0.24);
+    border-color: var(--accent);
+}
+
+.student-form button {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.9rem 1.2rem;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.student-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba(159, 79, 39, 0.25);
+}
+
+.form-status {
+    min-height: 1.5rem;
+    margin: 0.75rem 0 0;
+    color: var(--accent-dark);
+    font-weight: 600;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.student-count {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.student-list {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.student-card,
+.empty-state {
+    border-radius: 18px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(84, 66, 55, 0.1);
+}
+
+.student-card {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.student-card h3 {
+    margin: 0;
+    font-size: 1.08rem;
+}
+
+.student-meta {
+    margin: 0;
+    color: var(--muted);
+}
+
+.empty-state {
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .app-shell {
+        width: min(100% - 1rem, 100%);
+        padding: 1rem 0 2rem;
+    }
+
+    .panel {
+        padding: 1.2rem;
+        border-radius: 20px;
+    }
+
+    .list-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
