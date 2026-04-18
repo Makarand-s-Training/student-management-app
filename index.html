@@ -16,34 +16,54 @@
         <section class="hero">
             <p class="eyebrow">Sinhgad College</p>
             <h1 class="heading-color">Student Management App</h1>
-            <p class="hero-copy">Add student records and review them instantly. All data is stored locally in your
-                browser with <strong>localStorage</strong>.</p>
-        </section>
-
-        <section class="panel form-panel">
-            <h2>Add Student</h2>
-            <form id="studentForm" class="student-form">
-                <label for="studentName">Student Name</label>
-                <input id="studentName" name="studentName" type="text" placeholder="Enter full name" required>
-
-                <label for="studentRollNo">Roll Number</label>
-                <input id="studentRollNo" name="studentRollNo" type="text" placeholder="Enter roll number" required>
-
-                <label for="studentCourse">Course</label>
-                <input id="studentCourse" name="studentCourse" type="text" placeholder="Enter course name" required>
-
-                <button type="submit">Add Student</button>
-            </form>
-            <p id="statusMessage" class="status-message" aria-live="polite"></p>
-        </section>
-
-        <section class="panel list-panel">
-            <div class="section-heading">
-                <h2>Student List</h2>
-                <button id="refreshButton" type="button" class="secondary-button">Refresh List</button>
+            <p class="hero-copy">Sign in to manage student records. All data is stored locally in your browser with
+                <strong>localStorage</strong>.
+            </p>
+            <div class="auth-controls">
+                <p id="authStatus" class="status-message" aria-live="polite"></p>
+                <button id="logoutButton" type="button" class="secondary-button hidden">Logout</button>
             </div>
-            <div id="studentList" class="student-list"></div>
         </section>
+
+        <section id="loginPanel" class="panel form-panel">
+            <h2>Login</h2>
+            <form id="loginForm" class="student-form">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" placeholder="Enter username" required>
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </section>
+
+        <div id="appContent" class="hidden">
+            <section class="panel form-panel">
+                <h2>Add Student</h2>
+                <form id="studentForm" class="student-form">
+                    <label for="studentName">Student Name</label>
+                    <input id="studentName" name="studentName" type="text" placeholder="Enter full name" required>
+
+                    <label for="studentRollNo">Roll Number</label>
+                    <input id="studentRollNo" name="studentRollNo" type="text" placeholder="Enter roll number" required>
+
+                    <label for="studentCourse">Course</label>
+                    <input id="studentCourse" name="studentCourse" type="text" placeholder="Enter course name" required>
+
+                    <button type="submit">Add Student</button>
+                </form>
+                <p id="statusMessage" class="status-message" aria-live="polite"></p>
+            </section>
+
+            <section class="panel list-panel">
+                <div class="section-heading">
+                    <h2>Student List</h2>
+                    <button id="refreshButton" type="button" class="secondary-button">Refresh List</button>
+                </div>
+                <div id="studentList" class="student-list"></div>
+            </section>
+        </div>
     </main>
 
     <script src="script.js"></script>

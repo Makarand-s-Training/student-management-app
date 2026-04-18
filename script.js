@@ -1,9 +1,15 @@
 const STORAGE_KEY = "sinhgadCollegeStudents";
+const AUTH_STORAGE_KEY = "sinhgadCollegeCurrentUser";
 
 const studentForm = document.getElementById("studentForm");
 const studentList = document.getElementById("studentList");
 const statusMessage = document.getElementById("statusMessage");
 const refreshButton = document.getElementById("refreshButton");
+const loginForm = document.getElementById("loginForm");
+const loginPanel = document.getElementById("loginPanel");
+const appContent = document.getElementById("appContent");
+const logoutButton = document.getElementById("logoutButton");
+const authStatus = document.getElementById("authStatus");
 
 function getStudents() {
     const storedStudents = localStorage.getItem(STORAGE_KEY);
@@ -21,6 +27,49 @@ function getStudents() {
 
 function saveStudents(students) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+}
+
+function getCurrentUser() {
+    const currentUser = localStorage.getItem(AUTH_STORAGE_KEY);
+
+    if (!currentUser) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(currentUser);
+    } catch {
+        return null;
+    }
+}
+
+function saveCurrentUser(username) {
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({ username }));
+}
+
+function clearCurrentUser() {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+}
+
+function setAuthMessage(message) {
+    authStatus.textContent = message;
+}
+
+function renderAuthState() {
+    const currentUser = getCurrentUser();
+    const isLoggedIn = Boolean(currentUser);
+
+    loginPanel.classList.toggle("hidden", isLoggedIn);
+    appContent.classList.toggle("hidden", !isLoggedIn);
+    logoutButton.classList.toggle("hidden", !isLoggedIn);
+
+    if (isLoggedIn) {
+        setAuthMessage(`Logged in as ${currentUser.username}.`);
+        listStudents();
+        return;
+    }
+
+    setAuthMessage("Please log in to continue.");
 }
 
 function addStudent(student) {
@@ -51,6 +100,11 @@ function listStudents() {
 studentForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    if (!getCurrentUser()) {
+        statusMessage.textContent = "Please log in before adding students.";
+        return;
+    }
+
     const formData = new FormData(studentForm);
     const student = {
         name: formData.get("studentName").toString().trim(),
@@ -69,6 +123,29 @@ studentForm.addEventListener("submit", (event) => {
     listStudents();
 });
 
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(loginForm);
+    const username = formData.get("username").toString().trim();
+    const password = formData.get("password").toString().trim();
+
+    if (!username || !password) {
+        setAuthMessage("Please enter username and password.");
+        return;
+    }
+
+    saveCurrentUser(username);
+    loginForm.reset();
+    renderAuthState();
+});
+
+logoutButton.addEventListener("click", () => {
+    clearCurrentUser();
+    renderAuthState();
+    statusMessage.textContent = "";
+});
+
 refreshButton.addEventListener("click", listStudents);
 
-listStudents();
+renderAuthState();
