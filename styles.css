@@ -25,6 +25,10 @@ body {
         linear-gradient(145deg, #f7f1e8 0%, #efe5d5 100%);
 }
 
+.heading-color {
+    color: blue;
+}
+
 .app-shell {
     width: min(1100px, calc(100% - 32px));
     margin: 0 auto;
