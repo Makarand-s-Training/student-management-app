@@ -1,0 +1,213 @@
+:root {
+    --bg: #f4efe6;
+    --surface: rgba(255, 251, 245, 0.88);
+    --surface-strong: #fff9ef;
+    --text: #1c1a18;
+    --muted: #645b52;
+    --accent: #0d6b4d;
+    --accent-strong: #084c37;
+    --border: rgba(28, 26, 24, 0.08);
+    --shadow: 0 24px 60px rgba(35, 27, 18, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(13, 107, 77, 0.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(199, 151, 60, 0.2), transparent 28%),
+        linear-gradient(145deg, #f7f1e8 0%, #efe5d5 100%);
+}
+
+.app-shell {
+    width: min(1100px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0;
+    display: grid;
+    gap: 24px;
+}
+
+.hero,
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.hero {
+    padding: 32px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -60px -60px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(13, 107, 77, 0.16), rgba(199, 151, 60, 0.25));
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hero h1,
+.panel h2 {
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 0.98;
+    max-width: 10ch;
+}
+
+.hero-copy {
+    max-width: 58ch;
+    margin: 16px 0 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.panel {
+    padding: 28px;
+}
+
+.student-form {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(28, 26, 24, 0.12);
+    border-radius: 14px;
+    background: var(--surface-strong);
+    font: inherit;
+    color: inherit;
+    transition: border-color 150ms ease, transform 150ms ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgba(13, 107, 77, 0.65);
+    transform: translateY(-1px);
+}
+
+button {
+    border: none;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 180ms ease, opacity 180ms ease, background-color 180ms ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #f9f6f0;
+}
+
+.secondary-button {
+    background: #efe2c4;
+    color: #3f3527;
+}
+
+.status-message {
+    min-height: 24px;
+    margin: 14px 0 0;
+    color: var(--accent-strong);
+    font-weight: 500;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.student-list {
+    display: grid;
+    gap: 14px;
+}
+
+.student-card,
+.empty-state {
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--surface-strong);
+    border: 1px solid rgba(28, 26, 24, 0.08);
+}
+
+.student-card {
+    display: grid;
+    gap: 8px;
+}
+
+.student-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.student-meta {
+    margin: 0;
+    color: var(--muted);
+}
+
+.empty-state {
+    color: var(--muted);
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    .app-shell {
+        width: min(100% - 20px, 1100px);
+        padding: 24px 0;
+    }
+
+    .hero,
+    .panel {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    button,
+    .secondary-button {
+        width: 100%;
+    }
+}

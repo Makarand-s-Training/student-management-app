@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhgad College Student Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <p class="eyebrow">Sinhgad College</p>
+            <h1>Student Management App</h1>
+            <p class="hero-copy">Add student records and review them instantly. All data is stored locally in your
+                browser with <strong>localStorage</strong>.</p>
+        </section>
+
+        <section class="panel form-panel">
+            <h2>Add Student</h2>
+            <form id="studentForm" class="student-form">
+                <label for="studentName">Student Name</label>
+                <input id="studentName" name="studentName" type="text" placeholder="Enter full name" required>
+
+                <label for="studentRollNo">Roll Number</label>
+                <input id="studentRollNo" name="studentRollNo" type="text" placeholder="Enter roll number" required>
+
+                <label for="studentCourse">Course</label>
+                <input id="studentCourse" name="studentCourse" type="text" placeholder="Enter course name" required>
+
+                <button type="submit">Add Student</button>
+            </form>
+            <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </section>
+
+        <section class="panel list-panel">
+            <div class="section-heading">
+                <h2>Student List</h2>
+                <button id="refreshButton" type="button" class="secondary-button">Refresh List</button>
+            </div>
+            <div id="studentList" class="student-list"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
