@@ -1,5 +1,7 @@
 const STORAGE_KEY = "sinhgadCollegeStudents";
 const AUTH_STORAGE_KEY = "sinhgadCollegeCurrentUser";
+const VALID_USERNAME = "admin";
+const VALID_PASSWORD = "admin123";
 
 const studentForm = document.getElementById("studentForm");
 const studentList = document.getElementById("studentList");
@@ -132,6 +134,11 @@ loginForm.addEventListener("submit", (event) => {
 
     if (!username || !password) {
         setAuthMessage("Please enter username and password.");
+        return;
+    }
+
+    if (username !== VALID_USERNAME || password !== VALID_PASSWORD) {
+        setAuthMessage("Invalid username or password.");
         return;
     }
 

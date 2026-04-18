@@ -101,6 +101,11 @@ body {
     padding: 28px;
 }
 
+.login-helper {
+    margin: 12px 0 0;
+    color: var(--muted);
+}
+
 .hidden {
     display: none !important;
 }
