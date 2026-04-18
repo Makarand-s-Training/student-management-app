@@ -89,8 +89,30 @@ body {
     line-height: 1.6;
 }
 
+.auth-controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .panel {
     padding: 28px;
+}
+
+.login-helper {
+    margin: 12px 0 0;
+    color: var(--muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#appContent {
+    display: grid;
+    gap: 24px;
 }
 
 .student-form {
